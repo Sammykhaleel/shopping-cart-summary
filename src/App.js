@@ -5,6 +5,7 @@ import SubTotal from "./components/Subtotal/Subtotal";
 import PickupSavings from "./components/PickupSavings/PickupSavings";
 import TaxesFees from "./components/TaxesFees/TaxesFees";
 import EstimatedTotal from "./components/EstimatedTotal/EstimatedTotal";
+import ItemDetails from "./components/ItemDetails/ItemDetails";
 
 import "./App.css";
 // import { directive } from "@babel/types";
@@ -27,6 +28,7 @@ class App extends Component {
           <PickupSavings price={this.state.PickupSavings} />
           <TaxesFees taxes={this.state.taxes.toFixed(2)} />
           <EstimatedTotal price={this.state.EstimatedTotal.toFixed(2)} />
+          <ItemDetails />
           <hr />
         </Grid>
       </div>
