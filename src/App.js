@@ -18,7 +18,8 @@ class App extends Component {
       total: 100,
       PickupSavings: -3.85,
       taxes: 0,
-      EstimatedTotal: 0
+      EstimatedTotal: 0,
+      disablePromoButton: false
     };
   }
   render() {
@@ -30,8 +31,10 @@ class App extends Component {
           <TaxesFees taxes={this.state.taxes.toFixed(2)} />
           <EstimatedTotal price={this.state.EstimatedTotal.toFixed(2)} />
           <ItemDetails price={this.state.EstimatedTotal.toFixed(2)} />
-          <PromoCode price={this.state.EstimatedTotal.toFixed(2)} />
-          <hr />
+          <PromoCode
+            giveDiscount={() => this.giveDiscountHandler()}
+            isDisabled={this.state.disablePromoButton}
+          />
           <hr />
         </Grid>
       </div>

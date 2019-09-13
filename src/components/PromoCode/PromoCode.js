@@ -27,6 +27,36 @@ export default class PromoCode extends Component {
           promo code
           {this.state.open === false ? ` +` : ` -`}
         </Button>
+        <Collapse>
+          <div>
+            <Well>
+              <Row className="show-grid">
+                <Col md={12}>
+                  <Form>
+                    <FormGroup controlId="formInlineName">
+                      <ControlLabel>Promo Code</ControlLabel>
+                      <FormControl
+                        type="text"
+                        placeholder="Enter promo code"
+                        value={this.props.promoCode}
+                        onChange={this.handleChange}
+                      />
+                    </FormGroup>
+                    <Button
+                      block
+                      bsStyle="sucess"
+                      className="btn-round"
+                      disabled={this.props.isDisabled}
+                      onClick={this.props.giveDiscount}
+                    >
+                      Apply
+                    </Button>
+                  </Form>
+                </Col>
+              </Row>
+            </Well>
+          </div>
+        </Collapse>
       </div>
     );
   }
