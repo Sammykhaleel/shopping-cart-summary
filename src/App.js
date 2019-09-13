@@ -22,6 +22,20 @@ class App extends Component {
       disablePromoButton: false
     };
   }
+
+  componentDidMount = () => {
+    this.setState(
+      {
+        taxes: (this.state.total + this.state.PickupSavings) * 0.0875
+      },
+      function() {
+        this.setState({
+          EstimatedTotal:
+            this.state.total + this.state.PickupSavings + this.state.taxes
+        });
+      }
+    );
+  };
   render() {
     return (
       <div className="container">
