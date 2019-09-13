@@ -10,11 +10,17 @@ import {
   ControlLabel,
   FormControl
 } from "react-bootstrap";
-export default class PromoCode extends Component {
+import { connect } from "react-redux";
+import { handleChange } from "../../actions/promoCodeActions";
+class PromoCode extends Component {
   constructor(props) {
     super(props);
-    this.state = { open: false, value: "" };
+    this.state = { open: false };
   }
+
+  handleChange = e => {
+    this.props.handleChange(e);
+  };
   render() {
     return (
       <div>
@@ -27,7 +33,7 @@ export default class PromoCode extends Component {
           promo code
           {this.state.open === false ? ` +` : ` -`}
         </Button>
-        <Collapse>
+        <Collapse in={this.state.open}>
           <div>
             <Well>
               <Row className="show-grid">
@@ -45,7 +51,7 @@ export default class PromoCode extends Component {
                     <Button
                       block
                       bsStyle="sucess"
-                      className="btn-round"
+                      className="btn-round btn btn-success btn-block"
                       disabled={this.props.isDisabled}
                       onClick={this.props.giveDiscount}
                     >
@@ -61,3 +67,10 @@ export default class PromoCode extends Component {
     );
   }
 }
+const mapStateToProps = state => ({
+  promoCode: state.promoCode.value
+});
+export default connect(
+  mapStateToProps,
+  { handleChange }
+)(PromoCode);

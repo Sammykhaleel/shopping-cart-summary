@@ -24,3 +24,6 @@
 .promo-code-button:focus {
   outline: none;
 }
+.btn-round {
+  border-radius: 17px;
+}
